@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <title>Analise de texto</title>
+</head>
+<body>
+    <div class="flex justify-center items-center h-screen">
+        <div class="text-center">
+            <h1 class="text-6xl font-bold mb-4">Analise de Texto</h1>
+            <form action="/buscar" method="post" class="flex justify-center flex-col gap-3">
+                <div class="flex items-center border-b-2 border-blue-500 py-2">
+                    <input type="text" name="termo" placeholder="Digite uma frase" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none">
+                    <button type="submit" class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.js"></script>
+</body>
+</html>
