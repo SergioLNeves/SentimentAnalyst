@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+import subprocess
+
 
 app = Flask(__name__)
 
@@ -9,9 +11,13 @@ def Home():
 @app.route('/buscar', methods=['POST'])
 def buscar():
     termo = request.form.get('termo')
-    with open('../TesteIA/texto/termo.txt', 'w') as arquivo:
+    with open('../SentimentAnalyst/texto/termo.txt', 'w') as arquivo:
             arquivo.write(termo)
-    return render_template('ResultadoBusca.html', termo=termo)
+    subprocess.run(["python", "TranslateIA.py"])
+    subprocess.run(["python", "EmotionIA.py"])
+    with open('../SentimentAnalyst/texto/termo_traduzido.txt', 'r') as arquivo:
+        resposta = arquivo.read()
+    return render_template('ResultadoBusca.html', termo=termo, resposta=resposta)
 
 
 if __name__ == '__main__':
